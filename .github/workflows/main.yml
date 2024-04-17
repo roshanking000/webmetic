@@ -1,0 +1,27 @@
+name: Server Deployment
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Remote operations
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SERVER_IP }}
+        username: ${{ secrets.USERNAME }}
+        port: ${{ secrets.PORT }}
+        key: ${{ secrets.PKEY }}
+        script: |
+          cd /var/frontend
+          git pull
+          /var/frontend/venv/bin/pip install -r /var/frontend/backend/requirements.txt
+          npm install
+          npm run build
+          sudo systemctl daemon-reload
+          sudo systemctl restart webmetic-frontend
+          sudo systemctl restart webmetic-frontend-api

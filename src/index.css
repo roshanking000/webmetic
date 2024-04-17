@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body {
+    margin: 0;
+    font-family: 'Manrope', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 600;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+
+/* width */
+
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+
+/* Track */
+
+::-webkit-scrollbar-track {
+    background: #E0E2E7;
+}
+
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+    background: #699250;
+}
